@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'faalad-web-app'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_7c070e62d2f44783b9bf23b27d5b13e1 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_6fe61c7421d540cabc3bfd3e39a776a3 }}
