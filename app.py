@@ -27,6 +27,9 @@ def api_id():
     else:
         return "Error: No year field provided. Please specify a year."
     
+    if year > 2013 and year < 2021:
+        return "THIS APP WORKS AT LEAST BY AND LARGE."
+    
     if year > 2020 or year < 2011:
         return "Error: Data for this year is not available."
     
