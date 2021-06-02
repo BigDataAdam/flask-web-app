@@ -21,27 +21,25 @@ for the years 2011 - 2020. Use /api/v1/datasets and the desired year as paramete
 @app.route('/api/v1/datasets', methods=['GET'])
 def api_id():
     # Check if an year was provided as part of the URL.
-    try:
-        if 'year' in request.args:
-            year = int(request.args['year'])
-        else:
-            return "Error: No year field provided. Please specify a year."
-        
-        if year > 2020 or year < 2011:
-            return "Error: Data for this year is not available."
-        
-        file_name = datasets[year] 
-        data = {}
-        with open(file_name) as csvFile:
-            csvReader = csv.DictReader(csvFile)
-            for idx, rows in enumerate(csvReader):
-                #id = rows['id']
-                data[idx] = rows
+
+    if 'year' in request.args:
+        year = int(request.args['year'])
+    else:
+        return "Error: No year field provided. Please specify a year."
+    
+    if year > 2020 or year < 2011:
+        return "Error: Data for this year is not available."
+    
+    file_name = datasets[year] 
+    data = {}
+    with open(file_name) as csvFile:
+        csvReader = csv.DictReader(csvFile)
+        for idx, rows in enumerate(csvReader):
+            #id = rows['id']
+            data[idx] = rows
 
 
-        return data
-    except Exception as e:
-        return str(e)
+    return data
 
 #the following command must only be exectuted locally
 #app.run()
